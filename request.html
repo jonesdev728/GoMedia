@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Submit a Media Service Request">
+    <meta name="keywords" content="Media Request, Equipment Request, Event Services">
+    <meta name="author" content="Lance Jones">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Submit Media Request</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">Go Media Hub</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="request.html">Submit Request</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container my-5">
+    <h2 class="text-center mb-4">Media Service Request Form</h2>
+
+    <form action="process.php" method="POST" id="mediaForm">
+
+        <!-- Event Name -->
+        <div class="mb-3">
+            <label class="form-label">Event Name</label>
+            <input type="text" class="form-control" name="event_name" required>
+        </div>
+
+        <!-- Event Date -->
+        <div class="mb-3">
+            <label class="form-label">Event Date</label>
+            <input type="date" class="form-control" name="event_date" required>
+        </div>
+
+        <!-- Event Time -->
+        <div class="mb-3">
+            <label class="form-label">Event Time</label>
+            <input type="time" class="form-control" name="event_time" required>
+        </div>
+
+        <!-- Event Location -->
+        <div class="mb-3">
+            <label class="form-label">Event Location</label>
+            <input type="text" class="form-control" name="event_location" required>
+        </div>
+
+        <!-- Contact Name -->
+        <div class="mb-3">
+            <label class="form-label">Contact Name</label>
+            <input type="text" class="form-control" name="contact_name" required>
+        </div>
+
+        <!-- Contact Email -->
+        <div class="mb-3">
+            <label class="form-label">Contact Email</label>
+            <input type="email" class="form-control" name="contact_email" required>
+        </div>
+
+        <!-- Description -->
+        <div class="mb-3">
+            <label class="form-label">Description of Media Needs</label>
+            <textarea class="form-control" name="description" rows="4" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-dark">Submit Request</button>
+
+    </form>
+</div>
+<script>
+document.getElementById("mediaForm").addEventListener("submit", function(event) {
+    const email = document.querySelector("input[name='contact_email']").value;
+
+    if (!email.includes("@")) {
+        alert("Please enter a valid email address.");
+        event.preventDefault();
+    }
+});
+</script>
